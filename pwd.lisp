@@ -1,7 +1,14 @@
 ;;;; HN Personal Websites Directory
 ;;;; ==============================
 
-((:name "Alex Narayan"
+((:name "Alan Grow"
+  :site "https://alangrow.com/"
+  :about "https://alangrow.com/#hello-world"
+  :feed "https://alangrow.com/blog/atom.xml"
+  :hnuid "sigil"
+  :bio "Art-tech software developer and founder.")
+
+ (:name "Alex Narayan"
   :site "https://gigatexal.blog/"
   :about "https://gigatexal.blog/pages/about/about.html"
   :hnuid "gigatexal"
