@@ -68,6 +68,7 @@
 
  (:name "Mike Cardwell"
   :site "https://www.grepular.com/"
+  :blog "https://www.grepular.com/blog/"
   :feed "https://www.grepular.com/rss"
   :hnuid "mike-cardwell"
   :bio "Writes about tech, privacy, security and programming.")
