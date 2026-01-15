@@ -49,6 +49,14 @@
   :hnuid "beast-hacker"
   :bio "Makes small things on the Internet.")
 
+ (:name "Brajeshwar Oinam"
+  :site "https://brajeshwar.com/"
+  :feed "https://brajeshwar.com/feed.xml"
+  :about "https://brajeshwar.com/about/"
+  :now "https://brajeshwar.com/now/"
+  :hnuid "Brajeshwar"
+  :bio "Helping build a beautiful & meaningful world for my daughters & their friends.")
+
  (:name "Bruno Croci"
   :site "https://crocidb.com/"
   :feed "https://crocidb.com/index.xml"
