@@ -42,28 +42,22 @@
         (err "~a: Entries must be sorted alphabetically by name" curr-name))
       (setf prev-name curr-name))))
 
-(defun validate-bio-length (items)
-  "Check that bio entries do not exceed 80 characters."
+(defun validate-bio-text (items)
+  "Check that bio entries look good."
   (dolist (item items)
     (let ((bio (getf item :bio))
           (max-len 80))
-      (when (and bio (> (length bio) max-len))
-        (err "~a: Bio of length ~a exceeds maximum allowed length ~a"
-             (getf item :name) (length bio) max-len)))))
-
-(defun validate-bio-ampersand (items)
-  "Check that bio entries end with a full stop and contain no ampersands."
-  (dolist (item items)
-    (let ((bio (getf item :bio)))
-      (when (and bio (position #\& bio))
-        (err "~a: Bio must not contain ampersand (&)" (getf item :name))))))
-
-(defun validate-bio-stop (items)
-  "Check that bio entries end with a full stop."
-  (dolist (item items)
-    (let ((bio (getf item :bio)))
-      (when (and bio (char/= (char bio (1- (length bio))) #\.))
-        (err "~a: Bio must end with a full stop" (getf item :name))))))
+      (when bio
+        (when (> (length bio) max-len)
+          (err "~a: Bio of length ~a exceeds maximum allowed length ~a"
+               (getf item :name) (length bio) max-len))
+        (when (position #\& bio)
+          (err "~a: Bio must not contain ampersand (&)" (getf item :name)))
+        (when (char/= (char bio (1- (length bio))) #\.)
+          (err "~a: Bio must end with a full stop (period)" (getf item :name)))
+        (when (search ", and" bio)
+          (err "~a: Bio must not contain comma before 'and' (avoid Oxford comma)"
+               (getf item :name)))))))
 
 (defun validate-unique-urls (items)
   "Check that there are no duplicates in the URLs within the same entry."
@@ -217,9 +211,7 @@
   (let ((entries (read-entries)))
     (validate-name-order entries)
     (validate-unique-urls entries)
-    (validate-bio-length entries)
-    (validate-bio-ampersand entries)
-    (validate-bio-stop entries)
+    (validate-bio-text entries)
     (write-file "pwd.opml" (make-opml entries))
     (write-file "index.html" (make-html entries))))
 

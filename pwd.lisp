@@ -110,7 +110,7 @@
   :feed "https://ianreppel.org/feed.xml"
   :about "https://ianreppel.org/about"
   :hnuid "i7l"
-  :bio "Writes about machine learning, quantum computing, and product management.")
+  :bio "Writes about machine learning, quantum computing and product management.")
 
  (:name "Jeff Geerling"
   :site "https://www.jeffgeerling.com/"
